@@ -1,0 +1,6 @@
+[submodule "molecule-js-env"]
+	path = molecule-js-env
+	url = ../Molecule-JS-env.git
+[submodule "molecule-benchmarks"]
+	path = molecule-benchmarks
+	url = ../molecule-benchmarks.git

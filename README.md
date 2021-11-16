@@ -51,6 +51,8 @@ We use the *frontend* function in Alexa as a case.
 
 1. Switch the Node.js function runtime to single-mode
 
+Commands:
+
 	# change branch
 	cd molecule-js-env && git checkout single-func
 	# update submodules
@@ -69,7 +71,7 @@ For arm environment (e.g., on DPU), download the ddnirvana/molecule-js-env:v3-no
 **Explanation:**
 
 The docker image contains node.js 14.16.0 and some necessary packages.
-The Dockerfile and build scripts for the docker image is also open-sourced (TODO), which can be built by developers.
+The Dockerfile to build the docker image is also open-sourced (molecule-js-env/Dockerfile).
 
 3. Run *frontend* tests
 
