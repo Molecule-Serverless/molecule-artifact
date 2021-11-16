@@ -115,7 +115,7 @@ In the vsandbox-runtime dir:
 
 You shall see the results like:
 
-<img alt="FPGA function demo" src="./docs/molecule-ae-fpga-demo.png" width="256">
+<img alt="FPGA function demo" src="./docs/molecule-ae-fpga-demo.png" width="512">
 
 
 #### 3.3 Function-chain between CPU and DPU
