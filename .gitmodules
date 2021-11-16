@@ -4,3 +4,6 @@
 [submodule "molecule-benchmarks"]
 	path = molecule-benchmarks
 	url = ../molecule-benchmarks.git
+[submodule "vsandbox-runtime"]
+	path = vsandbox-runtime
+	url = ../vsandbox-runtime.git

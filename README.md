@@ -94,6 +94,29 @@ The script will run all alexa functions, to run individual, please read the scri
 
 #### 3.2 FPGA hello-world function
 
+To run a vector-multiple FPGA function:
+
+1. Build the runf vector-sandbox runtime
+
+	cd vsandbox-runtime
+	./autogen.sh
+	./configure
+	make -j8
+
+If you are using your own environment, please follow the README.md in vsandbox-runtime to install necessary dependencies.
+
+2. Run the demo
+
+In the vsandbox-runtime dir:
+
+	mkdir vsandbox-test && cd vsandbox-test
+	../vsandbox-runtime spec
+	../vsandbox-runtime run demo-sandbox
+
+You shall see the results like:
+
+<img alt="FPGA function demo" src="./docs/molecule-ae-fpga-demo.png" width="256">
+
 
 #### 3.3 Function-chain between CPU and DPU
 
