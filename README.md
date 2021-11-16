@@ -77,7 +77,7 @@ The Dockerfile to build the docker image is also open-sourced (molecule-js-env/D
 
 Commands:
 
-	# in molecule-bench dir, enter the docker env
+	# in molecule-benchmarks dir, enter the docker env
 	./docker_run.sh
 
 	# in the /env dir, if the node_modules is empty, execute the following instructiosn
