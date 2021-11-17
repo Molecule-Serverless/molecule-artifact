@@ -7,3 +7,9 @@
 [submodule "vsandbox-runtime"]
 	path = vsandbox-runtime
 	url = ../vsandbox-runtime.git
+[submodule "runc"]
+	path = runc
+	url = ../runc.git
+[submodule "forkable-python-runtime"]
+	path = forkable-python-runtime
+	url = ../rfork-python-runtime.git

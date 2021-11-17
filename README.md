@@ -98,6 +98,8 @@ To run a vector-multiple FPGA function:
 
 1. Build the runf vector-sandbox runtime
 
+Commands:
+
 	cd vsandbox-runtime
 	./autogen.sh
 	./configure
@@ -122,4 +124,69 @@ You shall see the results like:
 
 
 ### 4. Main results of the paper (Reproducability)
+
+In this part, we first explain detail steps on how to reproduce the key results
+of each techniques (i.e., cfork and IPC-based DAG) in Molecule, which shall
+give the reviewer sufficient confidence about the artifact.
+Afterthat, we give instructions to run scripts that can generate the results
+of benchmarks and applications.
+
+#### 4.1 cFork on single-PU (e.g., CPU or DPU)
+
+* Prepare Molecule's runc (which supports cFork)
+``` bash
+cd runc
+git checkout c12a5deed022ada93f499cc90fed54a23f0eb4d9
+make static
+
+```
+
+* Prepare forable-python-runtime  environment
+``` bash
+cd forkable-python-runtime
+# change the config of the runc path
+cd scripts
+vim config
+# modify RUNC to your path of the compiled runc
+
+```
+
+* Run tests
+``` bash
+cd forkable-python-runtime/scripts
+./kill_containers.sh # make sure that no old container exists
+
+./base_build.sh # build baseline container's bundle
+
+./template_build.sh # build template container's bundle
+./endpoint_build.sh # build endpoint container's bundle
+
+# test baseline works
+./run_baseline.sh
+
+# test cfork works
+./run_fork.sh
+
+# usage: python3 test_fork.py [test]
+# test can be baseline or fork
+# if no test is specified, it runs all tests by default
+# Caution: if the test is "fork", please make sure that you have run ./run_fork.sh successfully to warm up the environment
+python3 test_fork.py
+```
+
+You shall see the results like:
+
+
+<img alt="cfork on single-PU" src="./docs/cfork-singlePU.png" width="512">
+
+#### 4.2 IPC-based DAG on single-PU (e.g., CPU or DPU)
+
+#### 4.3 cFork on cross-PU (e.g., CPU-CPU or CPU-DPU)
+
+#### 4.4 IPC-based DAG on cross-PU (e.g., CPU-CPU or CPU-DPU)
+
+#### 4.5 FPGA function startup breakdown
+
+#### 4.6 Benchmarks and Applications
+
 
