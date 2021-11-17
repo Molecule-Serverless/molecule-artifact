@@ -181,6 +181,25 @@ You shall see the results like:
 
 #### 4.2 IPC-based DAG on single-PU (e.g., CPU or DPU)
 
+We prepare scripts to run chained serverless functions and generate the
+communication latency, as the Figure-12 in the paper.
+
+Commands:
+
+	cd molecule-js-env/src/tests/ipc/stages/
+	# This script will run all the four cases (in Figure-12)
+	./run_alexa_stage_tests.sh -a
+
+You shall see the results like:
+
+
+<img alt="IPC-based DAG on single-PU" src="./docs/ipc-dag-singlePU.png" width="512">
+
+This confirms the claims in the paper that IPC-based DAG communication
+can achieve significant lower latency (about 100--500us in most cases)
+compared with baseline.
+
+
 #### 4.3 cFork on cross-PU (e.g., CPU-CPU or CPU-DPU)
 
 #### 4.4 IPC-based DAG on cross-PU (e.g., CPU-CPU or CPU-DPU)
@@ -188,5 +207,7 @@ You shall see the results like:
 #### 4.5 FPGA function startup breakdown
 
 #### 4.6 Benchmarks and Applications
+
+
 
 
