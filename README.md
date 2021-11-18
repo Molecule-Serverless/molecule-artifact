@@ -205,6 +205,32 @@ compared with baseline.
 
 #### 4.4 IPC-based DAG on cross-PU (e.g., CPU-CPU or CPU-DPU)
 
+The steps are similiar to 4.2 o evaluate DAG performance on cross-PU.
+The major change is to prepare a XPU-shim in advance before running benchmarks.
+
+Build and run XPU-shim:
+
+	cd xpu-shim/src
+	make -j8
+	# create the shared dir used to communicate between XPU-shim and functions
+	sudo mkdir -p /tmp/fifo_dir
+	sudo ./moleculeos -i 0
+
+Run benchmarks:
+
+	cd molecule-js-env && git checkout hetero_ipc_neighborIPC
+	cd src/tests/ipc/stages/
+	# This script will run all the four cases (in Figure-12)
+	./run_alexa_stage_tests.sh -a
+
+You shall see the results like:
+
+<img alt="IPC-based DAG on cross-PU" src="./docs/ipc-dag-crossPU.png" width="512">
+
+This confirms the claims in the paper that XPU-shim's neighbor IPC
+can help functions on different PU to achieve low communication latency
+(about 150--600us in most cases).
+
 #### 4.5 FPGA function startup breakdown
 
 #### 4.6 Benchmarks and Applications

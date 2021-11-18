@@ -13,3 +13,6 @@
 [submodule "forkable-python-runtime"]
 	path = forkable-python-runtime
 	url = ../rfork-python-runtime.git
+[submodule "xpu-shim"]
+	path = xpu-shim
+	url = ../moleculeos.git
