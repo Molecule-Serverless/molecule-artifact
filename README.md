@@ -186,7 +186,8 @@ communication latency, as the Figure-12 in the paper.
 
 Commands:
 
-	cd molecule-js-env/src/tests/ipc/stages/
+	cd molecule-js-env && git checkout hetero_ipc
+	cd src/tests/ipc/stages/
 	# This script will run all the four cases (in Figure-12)
 	./run_alexa_stage_tests.sh -a
 
