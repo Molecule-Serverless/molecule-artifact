@@ -133,6 +133,8 @@ of benchmarks and applications.
 
 #### 4.1 cFork on single-PU (e.g., CPU or DPU)
 
+This section shows how to reproduce results in Figure-10 (a) and (b).
+
 * Prepare Molecule's runc (which supports cFork)
 ``` bash
 cd runc
@@ -280,8 +282,8 @@ can help functions on different PU to achieve low communication latency
 
 #### 4.5 FPGA function startup breakdown
 
+This section shows how to reproduce results in Figure-10 (c).
+
 #### 4.6 Benchmarks and Applications
-
-
 
 
