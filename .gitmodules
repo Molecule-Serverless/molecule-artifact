@@ -16,3 +16,6 @@
 [submodule "xpu-shim"]
 	path = xpu-shim
 	url = ../moleculeos.git
+[submodule "moleculeruntimeclient"]
+	path = moleculeruntimeclient
+	url = ../MoleculeRuntimeClient.git

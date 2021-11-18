@@ -203,6 +203,53 @@ compared with baseline.
 
 #### 4.3 cFork on cross-PU (e.g., CPU-CPU or CPU-DPU)
 
+In this case, we will rely on neighborIPC provided by XPU-shim to fork on an instance.
+
+
+Build and run XPU-shim:
+
+	cd xpu-shim/src
+	make -j8
+	# create the shared dir used to communicate between XPU-shim and functions
+	sudo mkdir -p /tmp/fifo_dir
+	sudo ./moleculeos -i 0
+
+Start Molecule-worker on each PU:
+
+	cd runc && git checkout molecule-cfork
+	make static
+	sudo ./runc runtime
+
+You will see the runtime is now connected to the XPU-shim.
+
+
+In another PU (or the same PU if you just simulate two PUs on the same CPU):
+
+	cd forkable-python-runtime/scripts
+	./base_build.sh # build baseline container's bundle
+	cd ../../
+	cd moleculeruntimeclient
+	make
+	sudo ./molecule_rpc_client run -i 1 -c python-test -b ~/.base/container0
+	sudo ./molecule_rpc_client run -i 1 -c app-test -b ~/.base/spin0
+
+Now you can fork the instances on remote PU:
+
+	sudo ./molecule_rpc_client cfork -i 1 -t python-test -p app-test
+
+You shall see the results like:
+
+
+<img alt="cFork on cross-PU" src="./docs/cfork-crossPU.png" width="512">
+
+This confirms the claims in the paper (Figure-11-a) that the cFork can achieve
+about 30ms even in cross-PU settings.
+
+**Note:** we do not apply the kernel optimization (CPUset opt), which is the biggest
+costs as shown in the breakdown in the above figure.
+We provide the patch in TODO_DIR, and users can feel free to apply and test the patch
+if they would.
+
 #### 4.4 IPC-based DAG on cross-PU (e.g., CPU-CPU or CPU-DPU)
 
 The steps are similiar to 4.2 o evaluate DAG performance on cross-PU.
