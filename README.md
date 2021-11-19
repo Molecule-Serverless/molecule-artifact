@@ -284,6 +284,29 @@ can help functions on different PU to achieve low communication latency
 
 This section shows how to reproduce results in Figure-10 (c).
 
+**Note:** We assume the vsandbox is correctly compiled. If it is not, please do it following the instructions above.
+
+Commands:
+
+In the vsandbox-runtime dir:
+
+	mkdir vsandbox-test && cd vsandbox-test
+	../vsandbox-runtime spec
+	## The following command will run all the tests
+	../FPGA_serverless_cli -b
+
+After that, you shall see the results like (including startup latency of four cases):
+
+<img alt="FPGA function startup breakdown" src="./docs/FPGA-startup-breakdown.png" width="512">
+
+
+Specifically:
+
+* in the first case, the total latency is 15+5.53+2 = 22.52s in the figure, which matches the 1st bar in Figure-10(c);
+* in the second case, the total latency is 1.83+1.9=3.73s, which matches the 2nd bar in Figure-10(c);
+* in the third case, the total latency is 1.9s, which matches the 3rd bar in Figure-10(c);
+* in the fourth case, the total latency is 46ms, which matches the 4th bar in Figure-10(c).
+
 #### 4.6 Benchmarks and Applications
 
 
