@@ -310,3 +310,14 @@ Specifically:
 #### 4.6 Benchmarks and Applications
 
 
+To reproduce FPGA benchmark results (Fig-14 e,f,g):
+
+	cd molecule-benchmarks/fpga-apps
+	./run_bench.sh
+
+You shall see the results like:
+
+<img alt="FPGA benchmarks" src="./docs/FPGA-benchmarks.png" width="512">
+
+
+The above fig shows the results of GZIP latency for FPGA and CPU, which totally match the result of Fig-14 (e).
