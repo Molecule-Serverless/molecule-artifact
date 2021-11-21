@@ -19,3 +19,6 @@
 [submodule "moleculeruntimeclient"]
 	path = moleculeruntimeclient
 	url = ../MoleculeRuntimeClient.git
+[submodule "functionBench"]
+	path = functionBench
+	url = ../serverless-faas-workbench.git

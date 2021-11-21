@@ -309,6 +309,25 @@ Specifically:
 
 #### 4.6 Benchmarks and Applications
 
+To reproduce functionbench results (Fig-14 a,b,c):
+
+	cd molecule-benchmarks/function-bench
+	./func_bench.sh
+
+You shall see the results like:
+
+<img alt="FunctionBench benchmarks" src="./docs/funcbench-benchmarks.png" width="512">
+
+The script will run all the test cases used in the paper, and shows the startup, end-to-end (cold boot),
+and end-to-end (warm boot) latencies.
+
+The above fig shows the results of Linpack.
+Molecule can achieve significant better performance compared with the baseline.
+The results match the data in the Figure-14.
+
+
+**Note:**
+Please ensure you have built runc before (in runc/).
 
 To reproduce FPGA benchmark results (Fig-14 e,f,g):
 
