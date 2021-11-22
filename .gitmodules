@@ -22,3 +22,6 @@
 [submodule "functionBench"]
 	path = functionBench
 	url = ../serverless-faas-workbench.git
+[submodule "pychain"]
+	path = pychain
+	url = ../pychain.git

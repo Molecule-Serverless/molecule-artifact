@@ -330,7 +330,7 @@ The results match the data in the Figure-14.
 Please ensure you have built runc before (in runc/).
 
 
-**Chained Applications:**
+**Chained Applications: Alexa**
 
 Commands:
 
@@ -343,6 +343,10 @@ You shall see the results like:
 
 
 <img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
+
+**Chained Applications: Mapper-Reducer**
+
+Follow the instructions in pychain/README.md.
 
 
 **To reproduce FPGA benchmark results (Fig-14 e,f,g)**:
