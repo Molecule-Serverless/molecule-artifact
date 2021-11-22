@@ -309,7 +309,7 @@ Specifically:
 
 #### 4.6 Benchmarks and Applications
 
-To reproduce functionbench results (Fig-14 a,b,c):
+**To reproduce functionbench results (Fig-14 a,b,c)**:
 
 	cd molecule-benchmarks/function-bench
 	./func_bench.sh
@@ -329,7 +329,23 @@ The results match the data in the Figure-14.
 **Note:**
 Please ensure you have built runc before (in runc/).
 
-To reproduce FPGA benchmark results (Fig-14 e,f,g):
+
+**Chained Applications:**
+
+Commands:
+
+	cd molecule-js-env && git checkout hetero_ipc
+	cd src/tests/ipc/chain/
+	# This script will run Alexa chained applications
+	./run_chain.sh
+
+You shall see the results like:
+
+
+<img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
+
+
+**To reproduce FPGA benchmark results (Fig-14 e,f,g)**:
 
 	cd molecule-benchmarks/fpga-apps
 	./run_bench.sh
