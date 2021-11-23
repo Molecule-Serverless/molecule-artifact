@@ -1,4 +1,4 @@
-![Molecule Header](docs/molecule-hdr.jpg)
+![Molecule Header](docs/molecule-hdr.png)
 
 ## Molecule: ASPLOS'22 Artifact
 
