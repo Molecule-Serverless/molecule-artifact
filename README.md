@@ -1,3 +1,5 @@
+![Molecule Header](docs/molecule-hdr.jpg)
+
 ## Molecule: ASPLOS'22 Artifact
 
 This artifact lays out the source code and experiment setup for the ACM ASPLOS 2022 conference paper:
