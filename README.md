@@ -5,7 +5,7 @@
 This artifact lays out the source code and experiment setup for the ACM ASPLOS 2022 conference paper:
 *"Serverless Computing on Heterogeneous Computers".*
 
-### 1. Introduction
+## 1. Introduction
 
 Molecule is a serverless runtime allowing functions running on heterogeneous devices.
 Specifically, we currently support CPU-DPU and CPU-FPGA platforms.
@@ -26,30 +26,32 @@ To ease AE reviewers quickly build, run, and evaluate Molecule, we have prepared
 
 All the software requirements are well-prepared in the provided F1 testbed.
 
-### 2. Getting started (artifact available)
+## 2. Getting started (artifact available and functional)
 
-Molecule is now an open-sourced our project, see in the git repo:
+In this section, we will explain how to install Molecule and run a simple demo.
 
-- https://github.com/Molecule-Serverless/Molecule-Artifact.git
+### 2.1. Install (available)
+
+Molecule is an open-sourced project at: https://github.com/Molecule-Serverless.
+As the project contains many components, e.g., container runtime supporting fork (i.e., runc)
+and language runtimes like Python/Node.JS for functions,
+we use sub-modules to manage them all in the artifact.
 
 To get the source code of Molecule:
 
 	git clone https://github.com/Molecule-Serverless/Molecule-Artifact.git
-
-Update all submodules:
-
+	## Update all submodules:
 	git submodule update --init --recursive
 
+To build the Molecule's components:
 
-Now you have everything needed to run Molecule's tests and reproduce the results.
+	./build_all.sh
 
-### 3. Run an example (Functionality)
+If everything goes fine, you have everything needed to run Molecule's tests and reproduce the results.
 
-This section explains demos to run hello-world like functions using Molecule to show the functionality.
+### 2.2. Run an example (functional)
 
-#### 3.1 CPU/DPU hello-world function
-
-We use the *frontend* function in Alexa as a case.
+We use the Alexa functions (from ServerlessBench) as a case.
 
 1. Switch the Node.js function runtime to single-mode
 
@@ -125,7 +127,7 @@ You shall see the results like:
 #### 3.3 Function-chain between CPU and DPU
 
 
-### 4. Main results of the paper (Reproducability)
+## 4. Main results of the paper (Reproducability)
 
 In this part, we first explain detail steps on how to reproduce the key results
 of each techniques (i.e., cfork and IPC-based DAG) in Molecule, which shall
