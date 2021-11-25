@@ -53,7 +53,11 @@ If you have DPU, or you are using ARM server, using the following command to bui
 
 	./build_all_arm.sh
 
-### 2.2. Run an example (functional)
+### 2.2. Run simple examples (functional)
+
+This section uses two cases to illustrate Molecule's functionalities.
+
+#### (1) Case for CPU/DPU hello-world function
 
 We use the Alexa functions (from ServerlessBench) as a case.
 
@@ -73,22 +77,30 @@ You shall see the results like:
 
 You can see the exe costs of frontend function when everything is fine.
 
-#### 3.2 FPGA hello-world function
+#### (2) Case for FPGA hello-world function
 
-To run a vector-multiple FPGA function:
+The following instructions assume you are using the provided AWS EC2 F1 instance.
+If you are using your own instance, please follow the
+[Prepare FPGA environment](./docs/prepare-fpga-env.md) to prepare your environment first.
+Otherwise, you are ready to do the experiments.
 
-1. Build the runf vector-sandbox runtime
+1. Install the molecule
 
-Commands:
+If you have installed, skip the step.
 
-	cd vsandbox-runtime
-	./autogen.sh
-	./configure
-	make -j8
+	git clone https://github.com/Molecule-Serverless/Molecule-Artifact.git
+	cd Molecule-Artifact
+	## Update all submodules:
+	git submodule update --init --recursive
+	./build_all.sh
 
-If you are using your own environment, please follow the README.md in vsandbox-runtime to install necessary dependencies.
+2. Prepare AWS F1 FPGA environment
 
-2. Run the demo
+In the molecule-artifact dir:
+
+	./source_fpga_env.sh
+
+3. Run the demo
 
 In the vsandbox-runtime dir:
 
@@ -99,10 +111,6 @@ In the vsandbox-runtime dir:
 You shall see the results like:
 
 <img alt="FPGA function demo" src="./docs/molecule-ae-fpga-demo.png" width="512">
-
-
-#### 3.3 Function-chain between CPU and DPU
-
 
 ## 4. Main results of the paper (Reproducability)
 
