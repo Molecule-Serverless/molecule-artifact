@@ -16,7 +16,8 @@ echo -e "\033[42;37m ======[Molecule Builder] Building XPU-shim success \033[0m"
 echo -e "\033[44;37m ======[Molecule Builder] Start building vsandbox \033[0m"
 pushd vsandbox-runtime > /dev/null 2>&1
 ./autogen.sh
-./configure
+### we should disable systemd to build it on CentOS (F1 instances)
+./configure --disable-systemd
 make -j8
 popd > /dev/null 2>&1
 echo -e "\033[42;37m ======[Molecule Builder] Building vsandbox success \033[0m"
