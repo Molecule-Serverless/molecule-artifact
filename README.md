@@ -39,7 +39,8 @@ we use sub-modules to manage them all in the artifact.
 
 To get the source code of Molecule:
 
-	git clone https://github.com/Molecule-Serverless/Molecule-Artifact.git
+	git clone git@github.com:Molecule-Serverless/molecule-artifact.git
+	cd molecule-artifact
 	## Update all submodules:
 	git submodule update --init --recursive
 
@@ -88,8 +89,8 @@ Otherwise, you are ready to do the experiments.
 
 If you have installed, skip the step.
 
-	git clone https://github.com/Molecule-Serverless/Molecule-Artifact.git
-	cd Molecule-Artifact
+	git clone git@github.com:Molecule-Serverless/molecule-artifact.git
+	cd molecule-artifact
 	## Update all submodules:
 	git submodule update --init --recursive
 	./build_all.sh
