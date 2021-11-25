@@ -103,8 +103,10 @@ In the molecule-artifact dir:
 
 3. Run the demo
 
+Now you are ready to run the demos (vector multiplex example):
+
 	cd molecule-benchmarks/fpga-apps
-	# Taking upto minutes
+	## Taking upto minutes
 	./run_demo.sh
 
 You shall see the results like:
@@ -123,9 +125,9 @@ Besides, we also explain detail steps on evaluate each techniques
 These steps are optional but can help reviewers/readers to identify
 the major improvement of Molecule.
 
-### 3.1 Benchmarks and Applications
+### (1) Benchmarks and Applications
 
-**To reproduce functionbench results (Fig-14 a,b,c)**:
+#### To reproduce Functionbench results (Fig-14 a,b,c):
 
 	cd molecule-benchmarks/function-bench
 	./func_bench.sh
@@ -146,26 +148,22 @@ The results match the data in the Figure-14.
 Please ensure you have built runc before (in runc/).
 
 
-**Chained Applications: Alexa**
+#### Chained Applications: Alexa
 
 Commands:
 
-	cd molecule-js-env && git checkout hetero_ipc
-	cd src/tests/ipc/chain/
+	# enter to the molecule-benchmarks dir
+	cd ./molecule-benchmarks
+	# Build runtime and functions
+	./chained-func/docker_build.sh
 	# This script will run Alexa chained applications
-	./run_chain.sh
+	./chained-func/docker_run.sh
 
 You shall see the results like:
 
-
 <img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
 
-**Chained Applications: Mapper-Reducer**
-
-Follow the instructions in pychain/README.md.
-
-
-**To reproduce FPGA benchmark results (Fig-14 e,f,g)**:
+#### To reproduce FPGA benchmark results (Fig-14 e,f,g):
 
 	cd molecule-benchmarks/fpga-apps
 	./run_bench.sh
@@ -174,10 +172,15 @@ You shall see the results like:
 
 <img alt="FPGA benchmarks" src="./docs/FPGA-benchmarks.png" width="512">
 
-
 The above fig shows the results of GZIP latency for FPGA and CPU, which totally match the result of Fig-14 (e).
 
-### 3.2 cFork on single-PU (e.g., CPU or DPU)
+If you have successfully run the above experiments and get the expected results,
+congradulation! you have done most of the work!
+
+In the following, we will explain the detailed instructions to run each microbenchmarks.
+All test cases are self-contained, that means you can directly select and run the cases that you are interested!
+
+### (2) cFork (for CPU or DPU)
 
 This section shows how to reproduce results in Figure-10 (a) and (b).
 
@@ -227,7 +230,7 @@ You shall see the results like:
 
 <img alt="cfork on single-PU" src="./docs/cfork-singlePU.png" width="512">
 
-### 3.3 IPC-based DAG on single-PU (e.g., CPU or DPU)
+### (3) IPC-based DAG (for CPU or DPU)
 
 We prepare scripts to run chained serverless functions and generate the
 communication latency, as the Figure-12 in the paper.
@@ -249,10 +252,16 @@ can achieve significant lower latency (about 100--500us in most cases)
 compared with baseline.
 
 
-### 3.4 cFork on cross-PU (e.g., CPU-CPU or CPU-DPU)
+### (4) cFork using neighborIPC
+
+The below instructions assum you do not have a DPU, so we will do the cFork on
+the single CPU node.
+However, unlike the above case, we will start an XPU-shim, which provides the
+neighborIPC interfaces for the cFork to use.
+The same case can be transparently run on a CPU-DPU setting, in which case you should
+start two XPU-shim and assigning them different IDs.
 
 In this case, we will rely on neighborIPC provided by XPU-shim to fork on an instance.
-
 
 Build and run XPU-shim:
 
@@ -298,10 +307,14 @@ costs as shown in the breakdown in the above figure.
 We provide the patch in TODO_DIR, and users can feel free to apply and test the patch
 if they would.
 
-### 3.5 IPC-based DAG on cross-PU (e.g., CPU-CPU or CPU-DPU)
+### (5) IPC-based DAG using neighborIPC
 
-The steps are similiar to 4.2 o evaluate DAG performance on cross-PU.
-The major change is to prepare a XPU-shim in advance before running benchmarks.
+The below instructions assum you do not have a DPU, so we will do the DAG communication
+on the single CPU node.
+However, unlike the above case, we will start an XPU-shim, which provides the
+neighborIPC interfaces for the IPC-based DAG to use.
+The same case can be transparently run on a CPU-DPU setting, in which case you should
+start two XPU-shim and assigning them different IDs.
 
 Build and run XPU-shim:
 
@@ -326,7 +339,7 @@ This confirms the claims in the paper that XPU-shim's neighbor IPC
 can help functions on different PU to achieve low communication latency
 (about 150--600us in most cases).
 
-### 3.6 FPGA function startup breakdown
+### (6) FPGA function startup breakdown
 
 This section shows how to reproduce results in Figure-10 (c).
 
@@ -353,3 +366,21 @@ Specifically:
 * in the third case, the total latency is 1.9s, which matches the 3rd bar in Figure-10(c);
 * in the fourth case, the total latency is 46ms, which matches the 4th bar in Figure-10(c).
 
+### (7) Other test cases
+
+#### Chained Applications: Mapper-Reducer
+
+Follow the instructions in pychain/README.md.
+
+
+## Acknowledgements
+
+We thank all of our reviewer, AE reviewers for their insightful comments!
+
+* If you thought the artifact is well-organized, functional, and easy-to-reproduce,
+consider champain the AE as the Distinguished Artifact, thanks in advance.
+* If you thought there are still many things to improve,
+please (anonymously) give the feedbacks through hotCRP.
+
+We are open and welcome developers and researchers to help us to
+improve the project.
