@@ -57,48 +57,21 @@ If you have DPU, or you are using ARM server, using the following command to bui
 
 We use the Alexa functions (from ServerlessBench) as a case.
 
-1. Switch the Node.js function runtime to single-mode
-
 Commands:
 
-	# change branch
-	cd molecule-js-env && git checkout single-func
-	# update submodules
-	git submodule update --init --recursive && cd ..
+	# enter to the molecule-benchmarks dir
+	cd ./molecule-benchmarks
+	# Build runtime and functions
+	./single-func/docker_build.sh
+	# Run the simple tests
+	./single-func/docker_run.sh
 
-2. Install docker image
+The script will run all alexa functions, and write data/log to single-func/results/.
+You shall see the results like:
 
-For x86 environment, download the ddnirvana/molecule-js-env:v3-node14.16.0 image.
+<img alt="Molecule function demo" src="./docs/molecule-func-demo.png" width="512">
 
-	docker pull ddnirvana/molecule-js-env:v3-node14.16.0
-
-For arm environment (e.g., on DPU), download the ddnirvana/molecule-js-env:v3-node14.16.0-arm.
-
-	docker pull ddnirvana/molecule-js-env:v3-node14.16.0-arm
-
-**Explanation:**
-
-The docker image contains node.js 14.16.0 and some necessary packages.
-The Dockerfile to build the docker image is also open-sourced (molecule-js-env/Dockerfile).
-
-3. Run *frontend* tests
-
-Commands:
-
-	# in molecule-benchmarks dir, enter the docker env
-	./docker_run.sh
-
-	# in the /env dir, if the node_modules is empty, execute the following instructiosn
-	# it happens for 1st installation
-	npm install
-
-	# in /env in the docker environment
-	./test_single_func_exec.sh
-
-The script will execute test cases and write data/log to a directory named results/.
-
-The script will run all alexa functions, to run individual, please read the script and comment some cases.
-
+You can see the exe costs of frontend function when everything is fine.
 
 #### 3.2 FPGA hello-world function
 
