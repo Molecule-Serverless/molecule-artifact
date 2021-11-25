@@ -43,11 +43,15 @@ To get the source code of Molecule:
 	## Update all submodules:
 	git submodule update --init --recursive
 
-To build the Molecule's components:
+To build the Molecule's components (on x86 CPU):
 
 	./build_all.sh
 
 If everything goes fine, you have everything needed to run Molecule's tests and reproduce the results.
+
+If you have DPU, or you are using ARM server, using the following command to build:
+
+	./build_all_arm.sh
 
 ### 2.2. Run an example (functional)
 
