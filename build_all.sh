@@ -26,7 +26,7 @@ echo -e "\033[42;37m ======[Molecule Builder] Building vsandbox success \033[0m"
 echo -e "\033[44;37m ======[Molecule Builder] Start building cfork-runc \033[0m"
 pushd runc > /dev/null 2>&1
 ### we should disable systemd to build it on CentOS (F1 instances)
-make static
+make
 popd > /dev/null 2>&1
 echo -e "\033[42;37m ======[Molecule Builder] Building cfork-runc success \033[0m"
 

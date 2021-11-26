@@ -8,3 +8,11 @@
 	sudo docker run hello-world
 	sudo groupadd docker
 	sudo usermod -aG docker $USER
+
+2. Golang
+
+Following the instructions at https://go.dev/doc/install to install the latest Golang.
+
+You can check the go is properly installed by:
+
+	go version

@@ -7,24 +7,34 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 
 ## 1. Introduction
 
-Molecule is a serverless runtime allowing functions running on heterogeneous devices.
-Specifically, we currently support CPU-DPU and CPU-FPGA platforms.
+Molecule is a serverless sandbox runtime allowing functions running on heterogeneous devices.
 
-**Hardware requirements:**
-- CPU-DPU: You need a computer (with x86 CPU cores) which is equipped with Nvidia Bluefield (both Bluefield-1 and Bluefield-2 are OK).
-- CPU-FPGA: You need a computer which is equpped with FPGA card. AWS EC2 F1 instance is perfectly to evalaute this secenario.
+**Essential hardware requirements:**
+- CPU: recommending x86 CPU, but ARM is OK. CPU is sufficient for most of the experiements in the artifact.
+- FPGA: You need a computer which is equpped with (at-least) one FPGA card for FPGA-based functions.
+AWS EC2 F1 instance (using AMI: ami-02155c6289e76719a) is perfectly for this case.
+To ease AE reviewers do the experiments, we have prepared an instance that can be used during the AE period (see hotcrp for the way to access the instance).
 
-To ease AE reviewers quickly build, run, and evaluate Molecule, we have prepared:
-- a simulation mode that can using two XPU-Shim in a single CPU to simulate CPU-DPU settings;
-- an F1 instance that can be accessed to run cases for CPU-DPU.
+**Optional hardware requirements:**
+- DPU: You need a computer (with x86 CPU cores) which is equipped with Nvidia Bluefield (both Bluefield-1 and Bluefield-2 are OK).
+As DPU is a generic processor (using ARM CPU cores) and is abstracted by XPU-shim,
+the experiments for CPU-DPU settings are almost the same as for CPU-only setting.
+In the following cases, you will use CPU for the tests, but you can refer to
+[Running experiments on CPU-DPU](./docs/experiments-on-DPU.md) if you have DPU and want to do experiments on that.
+
 
 **Software requirements:**
 
 1. Git: Molecule uses git for version control
 2. Docker: Molecule uses docker to create the build environment
-3. Linux: All the testing scripts are developed for Linux (e.g., ubuntu-20.04 we used), which may be incompatible with mac or windows.
+3. Linux: All the testing scripts are developed for Linux (Ubuntu-18.04/Ubuntu-20.04/CentOS Linux release 7.9.2009 are validated), which may be incompatible with mac or windows.
+4. Golang: go version go1.15.5 (or higher) linux/amd64
 
 All the software requirements are well-prepared in the provided F1 testbed.
+
+You can do all the tests on the F1 instance, or just do the FPGA-related tests on F1 and others on your local environment.
+In the following, we will explictly mark the tests that require an FPGA with .
+
 
 ## 2. Getting started (artifact available and functional)
 
