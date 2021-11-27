@@ -54,6 +54,21 @@ To get the source code of Molecule:
 	## Update all submodules:
 	git submodule update --init --recursive
 
+Download the basic software dependencies.
+
+For Ubuntu:
+
+	$ sudo apt-get install -y make git gcc build-essential pkgconf libtool \
+	  libsystemd-dev libprotobuf-c-dev libcap-dev libseccomp-dev libyajl-dev \
+   	  go-md2man libtool autoconf python3 automake
+
+For CentOS:
+
+	$ sudo yum --enablerepo='*' --disablerepo='media-*' --disablerepo=c7-media  install -y make automak \
+	  autoconf gettext libtool gcc libcap-devel systemd-devel \
+	  yajl-devel libseccomp-devel python36 libtool git
+
+
 To build the Molecule's components (on x86 CPU):
 
 	./build_all.sh
@@ -156,9 +171,8 @@ The above fig shows the results of Linpack.
 Molecule can achieve significant better performance compared with the baseline.
 The results match the data in the Figure-14.
 
-
 **Note:**
-Please ensure you have built runc before (in runc/).
+Please ensure you have built Molecule using ./build_all.sh.
 
 
 #### Chained Applications: Alexa
