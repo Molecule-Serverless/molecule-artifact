@@ -10,13 +10,13 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 Molecule is a serverless sandbox runtime allowing functions running on heterogeneous devices.
 
 **Essential hardware requirements:**
-- CPU: recommending x86 CPU, but ARM is OK. CPU is sufficient for most of the experiements in the artifact.
-- FPGA: You need a computer which is equpped with (at-least) one FPGA card for FPGA-based functions.
+- **CPU**: recommending x86 CPU, but ARM is OK. CPU is sufficient for most of the experiements in the artifact.
+- **FPGA**: You need a computer which is equpped with (at-least) one FPGA card for FPGA-based functions.
 AWS EC2 F1 instance (using AMI: ami-02155c6289e76719a) is perfectly for this case.
-To ease AE reviewers do the experiments, we have prepared an instance that can be used during the AE period (see hotcrp for the way to access the instance).
+To ease AE reviewers do the experiments, **we have prepared an F1 instance that can be used during the AE period** (see hotcrp for the way to access the instance).
 
 **Optional hardware requirements:**
-- DPU: You need a computer (with x86 CPU cores) which is equipped with Nvidia Bluefield (both Bluefield-1 and Bluefield-2 are OK).
+- **DPU**: You need a computer (with x86 CPU cores) which is equipped with Nvidia Bluefield (both Bluefield-1 and Bluefield-2 are OK).
 As DPU is a generic processor (using ARM CPU cores) and is abstracted by XPU-shim,
 the experiments for CPU-DPU settings are almost the same as for CPU-only setting.
 In the following cases, you will use CPU for the tests, but you can refer to
@@ -33,7 +33,7 @@ In the following cases, you will use CPU for the tests, but you can refer to
 All the software requirements are well-prepared in the provided F1 testbed.
 
 You can do all the tests on the F1 instance, or just do the FPGA-related tests on F1 and others on your local environment.
-In the following, we will explictly mark the tests that require an FPGA with .
+In the following, we will explictly mark the tests that require an FPGA with :trophy: .
 
 
 ## 2. Getting started (artifact available and functional)
@@ -88,7 +88,7 @@ You shall see the results like:
 
 You can see the exe costs of frontend function when everything is fine.
 
-#### (2) Case for FPGA hello-world function
+#### (2) Case for FPGA hello-world function ( :trophy: )
 
 The following instructions assume you are using the provided AWS EC2 F1 instance.
 If you are using your own instance, please follow the
@@ -176,7 +176,7 @@ You shall see the results like:
 
 <img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
 
-#### To reproduce FPGA benchmark results (Fig-14 e,f,g):
+#### To reproduce FPGA benchmark results (Fig-14 e, :trophy: ):
 
 	cd molecule-benchmarks/fpga-apps
 	./run_bench.sh
@@ -185,35 +185,19 @@ You shall see the results like:
 
 <img alt="FPGA benchmarks" src="./docs/FPGA-benchmarks.png" width="512">
 
-The above fig shows the results of GZIP latency for FPGA and CPU, which totally match the result of Fig-14 (e).
+The above fig shows the results of GZIP latency for FPGA ench-benchmarks.pngCPU, which totally match the result of Fig-14 (e).
 
 If you have successfully run the above experiments and get the expected results,
 congradulation! you have done most of the work!
 
-In the following, we will explain the detailed instructions to run each microbenchmarks.
+In the following, we will explain the detailed instructions to run each (optional) microbenchmarks.
 All test cases are self-contained, that means you can directly select and run the cases that you are interested!
 
 ### (2) cFork (for CPU or DPU)
 
 This section shows how to reproduce results in Figure-10 (a) and (b).
 
-* Prepare Molecule's runc (which supports cFork)
-``` bash
-cd runc
-git checkout c12a5deed022ada93f499cc90fed54a23f0eb4d9
-make static
-
-```
-
-* Prepare forable-python-runtime  environment
-``` bash
-cd forkable-python-runtime
-# change the config of the runc path
-cd scripts
-vim config
-# modify RUNC to your path of the compiled runc
-
-```
+* Ensure you have built Molecule using ./build_all.sh
 
 * Run tests
 ``` bash
@@ -231,15 +215,14 @@ cd forkable-python-runtime/scripts
 # test cfork works
 ./run_fork.sh
 
-# usage: python3 test_fork.py [test]
+# usage: python3 test_cfork.py [test]
 # test can be baseline or fork
 # if no test is specified, it runs all tests by default
 # Caution: if the test is "fork", please make sure that you have run ./run_fork.sh successfully to warm up the environment
-python3 test_fork.py
+python3 test_cfork.py
 ```
 
 You shall see the results like:
-
 
 <img alt="cfork on single-PU" src="./docs/cfork-singlePU.png" width="512">
 
@@ -352,7 +335,7 @@ This confirms the claims in the paper that XPU-shim's neighbor IPC
 can help functions on different PU to achieve low communication latency
 (about 150--600us in most cases).
 
-### (6) FPGA function startup breakdown
+### (6) FPGA function startup breakdown ( :trophy: )
 
 This section shows how to reproduce results in Figure-10 (c).
 
