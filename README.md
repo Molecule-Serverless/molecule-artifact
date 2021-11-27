@@ -123,6 +123,9 @@ You shall see the results like:
 
 <img alt="FPGA function demo" src="./docs/molecule-ae-fpga-demo.png" width="512">
 
+In the cold run, it is possible to use more time for FPGA;
+while in the warm run, the FPGA should achieve about 3x better latency compared with CPU.
+
 ## 3. Main results of the paper (Reproducability)
 
 In this part, we first explain instructions to run scripts that can
