@@ -233,13 +233,13 @@ communication latency, as the Figure-12 in the paper.
 
 Commands:
 
-	cd molecule-js-env && git checkout hetero_ipc
-	cd src/tests/ipc/stages/
+	# Enter molecule-benchmarks
+	cd molecule-benchmarks
+	./staged-func/docker_build.sh
 	# This script will run all the four cases (in Figure-12)
-	./run_alexa_stage_tests.sh -a
+	./staged-func/docker_run.sh
 
 You shall see the results like:
-
 
 <img alt="IPC-based DAG on single-PU" src="./docs/ipc-dag-singlePU.png" width="512">
 
@@ -259,24 +259,31 @@ start two XPU-shim and assigning them different IDs.
 
 In this case, we will rely on neighborIPC provided by XPU-shim to fork on an instance.
 
-Build and run XPU-shim:
+1. Ensure you have built Molecule using ./build_all.sh
 
-	cd xpu-shim/src
-	make -j8
-	# create the shared dir used to communicate between XPU-shim and functions
-	sudo mkdir -p /tmp/fifo_dir
+2. Start the XPU-shim on local node
+
+Commands:
+
+	cd xpu-shim/src/
 	sudo ./moleculeos -i 0
 
-Start Molecule-worker on each PU:
+This command will start an XPU-shim node which will blocking the terminal.
 
-	cd runc && git checkout molecule-cfork
-	make static
-	sudo ./runc runtime
+Try to start another terminal for the following instructions.
+
+3. Start Molecule-worker on each PU:
+
+Commands:
+
+	sudo ./runc/runc runtime
 
 You will see the runtime is now connected to the XPU-shim.
 
 
-In another PU (or the same PU if you just simulate two PUs on the same CPU):
+4. Run the tests
+
+In another terminal (or another PU if you have other PUs like DPU):
 
 	cd forkable-python-runtime/scripts
 	./base_build.sh # build baseline container's bundle
@@ -300,8 +307,6 @@ about 30ms even in cross-PU settings.
 
 **Note:** we do not apply the kernel optimization (CPUset opt), which is the biggest
 costs as shown in the breakdown in the above figure.
-We provide the patch in TODO_DIR, and users can feel free to apply and test the patch
-if they would.
 
 ### (5) IPC-based DAG using neighborIPC
 
@@ -312,15 +317,16 @@ neighborIPC interfaces for the IPC-based DAG to use.
 The same case can be transparently run on a CPU-DPU setting, in which case you should
 start two XPU-shim and assigning them different IDs.
 
-Build and run XPU-shim:
+1. Ensure you have built Molecule using ./build_all.sh
+
+2. Start the XPU-shim on local node
+
+Commands:
 
 	cd xpu-shim/src
-	make -j8
-	# create the shared dir used to communicate between XPU-shim and functions
-	sudo mkdir -p /tmp/fifo_dir
 	sudo ./moleculeos -i 0
 
-Run benchmarks:
+3. Run benchmarks:
 
 	cd molecule-js-env && git checkout hetero_ipc_neighborIPC
 	cd src/tests/ipc/stages/
@@ -339,14 +345,16 @@ can help functions on different PU to achieve low communication latency
 
 This section shows how to reproduce results in Figure-10 (c).
 
-**Note:** We assume the vsandbox is correctly compiled. If it is not, please do it following the instructions above.
+1. Ensure you have built Molecule using ./build_all.sh
+
+2. Run the tests
 
 Commands:
 
-In the vsandbox-runtime dir:
-
+	# In the vsandbox-runtime dir:
+	cd vsandbox-runtime
 	mkdir vsandbox-test && cd vsandbox-test
-	../vsandbox-runtime spec
+	../vsandbox spec
 	## The following command will run all the tests
 	../FPGA_serverless_cli -b
 

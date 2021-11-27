@@ -8,6 +8,7 @@ echo -e "\033[44;37m ======[Molecule Builder] Start building XPU-shim \033[0m"
 pushd xpu-shim/src > /dev/null 2>&1
 make -j8
 # create the shared dir used to communicate between XPU-shim and functions
+sudo rm -rf /tmp/fifo_dir
 sudo mkdir -p /tmp/fifo_dir
 popd > /dev/null 2>&1
 echo -e "\033[42;37m ======[Molecule Builder] Building XPU-shim success \033[0m"
