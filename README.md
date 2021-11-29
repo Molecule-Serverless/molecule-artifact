@@ -66,7 +66,7 @@ For CentOS:
 
 	$ sudo yum --enablerepo='*' --disablerepo='media-*' --disablerepo=c7-media  install -y make automak \
 	  autoconf gettext libtool gcc libcap-devel systemd-devel \
-	  yajl-devel libseccomp-devel python36 libtool git
+	  yajl-devel libseccomp-devel python36 libtool git glibc-static
 
 
 To build the Molecule's components (on x86 CPU):
