@@ -342,6 +342,8 @@ Commands:
 
 3. Run benchmarks:
 
+Commands:
+
 	cd molecule-js-env && git checkout hetero_ipc_neighborIPC
 	cd src/tests/ipc/stages/
 	# This script will run all the four cases (in Figure-12)
