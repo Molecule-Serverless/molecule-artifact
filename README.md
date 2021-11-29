@@ -396,7 +396,7 @@ Follow the instructions in pychain/README.md.
 We thank all of our reviewer, AE reviewers for their insightful comments!
 
 * If you thought the artifact is well-organized, functional, and easy-to-reproduce,
-consider champain the AE as the Distinguished Artifact, thanks in advance.
+consider champain the artifact, thanks in advance.
 * If you thought there are still many things to improve,
 please (anonymously) give the feedbacks through hotCRP.
 
