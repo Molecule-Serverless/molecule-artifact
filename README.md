@@ -342,12 +342,12 @@ Commands:
 
 3. Run benchmarks:
 
-Commands:
+In another terminal:
 
-	cd molecule-js-env && git checkout hetero_ipc_neighborIPC
-	cd src/tests/ipc/stages/
-	# This script will run all the four cases (in Figure-12)
-	./run_alexa_stage_tests.sh -a
+	# Enter molecule-benchmarks
+	cd molecule-benchmarks
+	./staged-func-nIPC/docker_build.sh
+	./staged-func-nIPC/docker_run.sh
 
 You shall see the results like:
 
