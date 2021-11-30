@@ -36,3 +36,11 @@ echo -e "\033[42;37m ======[Molecule Builder] Building cfork-runc success \033[0
 echo -e "\033[44;37m ======[Molecule Builder] Start pulling AE used docker images \033[0m"
 docker pull ddnirvana/molecule-js-env:v3-node14.16.0
 echo -e "\033[42;37m ======[Molecule Builder] Pulling images finished \033[0m"
+
+
+echo -e "\033[44;37m ======[Molecule Builder] Pulling large files \033[0m"
+pushd molecule-benchmarks/ > /dev/null 2>&1
+git lfs pull
+popd > /dev/null 2>&1
+echo -e "\033[42;37m ======[Molecule Builder] Pulling files finished \033[0m"
+
