@@ -5,7 +5,7 @@ Assuming you are using a new F1 instances using CentOS AMI.
 1. Basic dependeicies
 
 	sudo yum install vim build-essentials
-	sudo yum --enablerepo='*' --disablerepo='media-*' --disablerepo=c7-media  install -y make automake autoconf gettext libtool gcc libcap-devel systemd-devel yajl-devel libseccomp-devel python36 libtool git
+	sudo yum --enablerepo='*' --disablerepo='media-*' --disablerepo=c7-media  install -y make automake autoconf gettext libtool gcc libcap-devel systemd-devel yajl-devel libseccomp-devel python36 libtool git glibc-static
 
 2. Docker
 

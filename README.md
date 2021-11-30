@@ -66,7 +66,7 @@ For CentOS:
 
 	$ sudo yum --enablerepo='*' --disablerepo='media-*' --disablerepo=c7-media  install -y make automak \
 	  autoconf gettext libtool gcc libcap-devel systemd-devel \
-	  yajl-devel libseccomp-devel python36 libtool git
+	  yajl-devel libseccomp-devel python36 libtool git glibc-static
 
 
 To build the Molecule's components (on x86 CPU):
@@ -342,12 +342,12 @@ Commands:
 
 3. Run benchmarks:
 
-Commands:
+In another terminal:
 
-	cd molecule-js-env && git checkout hetero_ipc_neighborIPC
-	cd src/tests/ipc/stages/
-	# This script will run all the four cases (in Figure-12)
-	./run_alexa_stage_tests.sh -a
+	# Enter molecule-benchmarks
+	cd molecule-benchmarks
+	./staged-func-nIPC/docker_build.sh
+	./staged-func-nIPC/docker_run.sh
 
 You shall see the results like:
 
@@ -367,12 +367,9 @@ This section shows how to reproduce results in Figure-10 (c).
 
 Commands:
 
-	# In the vsandbox-runtime dir:
-	cd vsandbox-runtime
-	mkdir vsandbox-test && cd vsandbox-test
-	../vsandbox spec
-	## The following command will run all the tests
-	../FPGA_serverless_cli -b
+	cd molecule-benchmarks/fpga-apps
+	## Taking upto minutes
+	./run_breakdown.sh
 
 After that, you shall see the results like (including startup latency of four cases):
 
