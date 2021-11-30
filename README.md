@@ -205,7 +205,7 @@ If you have successfully run the above experiments and get the expected results,
 congradulation! you have done most of the work!
 
 In the following, we will explain the detailed instructions to run each (optional) microbenchmarks.
-All test cases are self-contained, that means you can directly select and run the cases that you are interested!
+All test cases are self-contained, that means you can directly select and run the cases that you are interested in!
 
 ### (2) cFork (for CPU or DPU)
 
@@ -264,12 +264,12 @@ compared with baseline.
 
 ### (4) cFork using neighborIPC
 
-The below instructions assum you do not have a DPU, so we will do the cFork on
-the single CPU node.
-However, unlike the above case, we will start an XPU-shim, which provides the
+The below instructions assume you do not have a DPU, so we will do the cFork on
+the node with a single CPU.
+However, unlike the above cases, we will start an XPU-shim, which provides the
 neighborIPC interfaces for the cFork to use.
-The same case can be transparently run on a CPU-DPU setting, in which case you should
-start two XPU-shim and assigning them different IDs.
+Similar cases can be transparently run on a CPU-DPU setting, in which you should
+start two XPU-shim and assign them different IDs.
 
 In this case, we will rely on neighborIPC provided by XPU-shim to fork on an instance.
 
@@ -282,9 +282,9 @@ Commands:
 	cd xpu-shim/src/
 	sudo ./moleculeos -i 0
 
-This command will start an XPU-shim node which will blocking the terminal.
+This command will start an XPU-shim node which will block the terminal.
 
-Try to start another terminal for the following instructions.
+Try to start **another** terminal for the following instructions.
 
 3. Start Molecule-worker on each PU:
 
