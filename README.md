@@ -367,12 +367,9 @@ This section shows how to reproduce results in Figure-10 (c).
 
 Commands:
 
-	# In the vsandbox-runtime dir:
-	cd vsandbox-runtime
-	mkdir vsandbox-test && cd vsandbox-test
-	../vsandbox spec
-	## The following command will run all the tests
-	../FPGA_serverless_cli -b
+	cd molecule-benchmarks/fpga-apps
+	## Taking upto minutes
+	./run_breakdown.sh
 
 After that, you shall see the results like (including startup latency of four cases):
 
