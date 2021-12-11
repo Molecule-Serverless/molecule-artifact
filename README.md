@@ -211,6 +211,10 @@ You shall see the results like:
 
 <img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
 
+The above shows the end-to-end latencies of Aleca chained applications under Molecule and the baseline,
+and Molecule achieves 2--3x better latency compared with the baseline
+(matching our improvement claims in the paper).
+
 #### To reproduce FPGA benchmark results (Fig-14 e, :trophy: ):
 
 	cd molecule-benchmarks/fpga-apps
