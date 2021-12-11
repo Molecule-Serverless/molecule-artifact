@@ -5,6 +5,16 @@
 This artifact lays out the source code and experiment setup for the ACM ASPLOS 2022 conference paper:
 *"Serverless Computing on Heterogeneous Computers".*
 
+---
+
+**Updates (2021-12-11)**:
+
+* Generate baseline data for chained application tests 3-(1);
+* Fix the imaage pull issues in 3-(7): Mapper-Reducer case;
+
+
+---
+
 ## 1. Introduction
 
 Molecule is a serverless sandbox runtime allowing functions running on heterogeneous devices.
@@ -164,15 +174,26 @@ You shall see the results like:
 
 <img alt="FunctionBench benchmarks" src="./docs/funcbench-benchmarks.png" width="512">
 
-The script will run all the test cases used in the paper, and shows the startup, end-to-end (cold boot),
-and end-to-end (warm boot) latencies.
+The script will run all the test cases of **FunctionBench** used in the paper,
+and shows the startup and end-to-end (cold boot).
 
 The above fig shows the results of Linpack.
+
+**How to parse the data:**
+
+* The avg end-to-end latencies of fork and baseline are related to data in Fig-14 in the paper, e.g., 59.30ms as Molecule's data and 191.80ms as Baseline's data.
+
+* You can also use other data, e.g., P99 latencies, for your own usages.
+
+The results basically match the data in the Figure-14.
 Molecule can achieve significant better performance compared with the baseline.
-The results match the data in the Figure-14.
 
 **Note:**
-Please ensure you have built Molecule using ./build_all.sh.
+
+* Please ensure you have built Molecule using ./build_all.sh.
+
+* To gain end-to-end (warm boot) latencies, please uncomment the *Line #53* and
+*#91* in the forkable-python-runtime/scripts/test_app.py
 
 
 #### Chained Applications: Alexa
