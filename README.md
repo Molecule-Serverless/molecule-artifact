@@ -6,8 +6,7 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 *"Serverless Computing on Heterogeneous Computers".*
 
 ---
-
-**Updates (2021-12-11)**:
+<font color="green"> **Updates (2021-12-11)** </font>:
 
 * Generate baseline data for chained application tests 3-(1);
 * Fix the imaage pull issues in 3-(7): Mapper-Reducer case;
