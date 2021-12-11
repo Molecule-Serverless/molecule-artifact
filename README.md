@@ -9,8 +9,8 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 <font color="green"> **Updates (2021-12-11)** </font>:
 
 * Generate baseline data for chained application tests 3-(1);
-* Fix the imaage pull issues in 3-(7): Mapper-Reducer case;
-
+* Fix the image pull issues in 3-(7): Mapper-Reducer case;
+* Add a *How to parse the data* paragraph under each test case in the Reproducability Section to directly relate the data to the results in the paper.
 
 ---
 
@@ -175,14 +175,19 @@ You shall see the results like:
 
 The script will run all the test cases of **FunctionBench** used in the paper,
 and shows the startup and end-to-end (cold boot).
-
-The above fig shows the results of Linpack.
+The `Image Resize` is not included here.
 
 **How to parse the data:**
+The above fig shows the results of Linpack.
 
-* The avg end-to-end latencies of fork and baseline are related to data in Fig-14 in the paper, e.g., 59.30ms as Molecule's data and 191.80ms as Baseline's data.
+1. The avg end-to-end latencies of fork and baseline are related to data in Fig-14 in the paper, e.g., 59.30ms as Molecule's data and 191.80ms as Baseline's data;
 
-* You can also use other data, e.g., P99 latencies, for your own usages.
+2. The shown results are different from the results shown in the paper because of different CPU configurations. In the paper, the concrete latencies for baseline (for LinPack) is 461ms and the improvement is about 2.5x. In the F1, the baseline for LinPack is 191ms and the improvement is about 3x. The speedup number variation (2.5x vs. 3x) is reasonable in this case, and the reason for the better result is because: the ratio of computation latencies decreased because of better hardware performance.
+3. You can also use other data, e.g., P99 latencies, for your own usages.
+
+
+
+
 
 The results basically match the data in the Figure-14.
 Molecule can achieve significant better performance compared with the baseline.
@@ -210,9 +215,12 @@ You shall see the results like:
 
 <img alt="Chained applications: Alexa" src="./docs/chained-app-alexa.png" width="512">
 
-The above shows the end-to-end latencies of Aleca chained applications under Molecule and the baseline,
-and Molecule achieves 2--3x better latency compared with the baseline
-(matching our improvement claims in the paper).
+**How to parse the data:**
+The above figure shows the end-to-end latencies of Alexa chained application under Molecule and the baseline systems.
+The figure shows latencies of 20 invocations under two systems.
+Overall, Molecule achieves 2--3x better latency compared with the baseline.
+In the paper, the improvement is 2x and the baseline is 38.6ms  (the first two bars in the left of Fig-14-d).
+The shown result matches our improvement claims in the paper.
 
 #### To reproduce FPGA benchmark results (Fig-14 e, :trophy: ):
 
@@ -223,7 +231,10 @@ You shall see the results like:
 
 <img alt="FPGA benchmarks" src="./docs/FPGA-benchmarks.png" width="512">
 
-The above fig shows the results of GZIP latency for FPGA ench-benchmarks.pngCPU, which totally match the result of Fig-14 (e).
+
+**How to parse the data:**
+The above fig shows the results of GZIP latency for FPGA and CPU functions, which totally match the result of Fig-14 (e).
+As the test case is real-world applications, the results you have may be slightly different from the above figure.
 
 If you have successfully run the above experiments and get the expected results,
 congradulation! you have done most of the work!
@@ -264,6 +275,11 @@ You shall see the results like:
 
 <img alt="cfork on single-PU" src="./docs/cfork-singlePU.png" width="512">
 
+**How to parse the data:**
+The setting used in the AE (F1) is much better than the server used in the paper.
+Therefore, you shall see a better result in F1 (fork shall achieves 15-17ms, and the baseline can achieve 108-150ms).
+
+
 ### (3) IPC-based DAG (for CPU or DPU)
 
 We prepare scripts to run chained serverless functions and generate the
@@ -281,8 +297,10 @@ You shall see the results like:
 
 <img alt="IPC-based DAG on single-PU" src="./docs/ipc-dag-singlePU.png" width="512">
 
-This confirms the claims in the paper that IPC-based DAG communication
-can achieve significant lower latency (about 100--500us in most cases)
+
+**How to parse the data:**
+The above figure shows the DAG latencies in Molecule, which can achieves <1 ms.
+This confirms the claims in the paper that IPC-based DAG communication can achieve significant lower latency (about 100--500us in most cases)
 compared with baseline.
 
 
