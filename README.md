@@ -224,6 +224,8 @@ The shown result matches our improvement claims in the paper.
 
 #### To reproduce FPGA benchmark results (Fig-14 e, :trophy: ):
 
+Ensure you have built Molecule using `./build_all.sh` and `source ./source_fpga_env.sh`
+
 	cd molecule-benchmarks/fpga-apps
 	./run_bench.sh
 
@@ -358,6 +360,13 @@ You shall see the results like:
 
 <img alt="cFork on cross-PU" src="./docs/cfork-crossPU.png" width="512">
 
+
+**How to parse the data:**
+The unit of the timestamp in the above figure is **nano seconds**.
+That means, 1637221287415,279854 means 1637221287415.279854 ms (as a time stamp).
+The latency is caculated by comparing the timestamp of `fork complete` and `start fork`;
+therefore, the latncies is: `1637221287415.279854 ms - 1637221287385.524794 ms = 29.7548828125ms`.
+
 This confirms the claims in the paper (Figure-11-a) that the cFork can achieve
 about 30ms even in cross-PU settings.
 
@@ -391,10 +400,12 @@ In another terminal:
 	./staged-func-nIPC/docker_build.sh
 	./staged-func-nIPC/docker_run.sh
 
-You shall see the results like:
+You shall see the results (in the 2nd terminal) like:
 
 <img alt="IPC-based DAG on cross-PU" src="./docs/ipc-dag-crossPU.png" width="512">
 
+**How to parse the data:**
+The results have the same format as the local DAG results.
 This confirms the claims in the paper that XPU-shim's neighbor IPC
 can help functions on different PU to achieve low communication latency
 (about 150--600us in most cases).
@@ -403,7 +414,7 @@ can help functions on different PU to achieve low communication latency
 
 This section shows how to reproduce results in Figure-10 (c).
 
-1. Ensure you have built Molecule using ./build_all.sh
+1. Ensure you have built Molecule using `./build_all.sh` and `source ./source_fpga_env.sh`
 
 2. Run the tests
 
@@ -418,8 +429,7 @@ After that, you shall see the results like (including startup latency of four ca
 <img alt="FPGA function startup breakdown" src="./docs/FPGA-startup-breakdown.png" width="512">
 
 
-Specifically:
-
+**How to parse the data:**
 * in the first case, the total latency is 15+5.53+2 = 22.52s in the figure, which matches the 1st bar in Figure-10(c);
 * in the second case, the total latency is 1.83+1.9=3.73s, which matches the 2nd bar in Figure-10(c);
 * in the third case, the total latency is 1.9s, which matches the 3rd bar in Figure-10(c);
