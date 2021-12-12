@@ -6,6 +6,12 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 *"Serverless Computing on Heterogeneous Computers".*
 
 ---
+**Updates (2021-12-12)** :
+
+* Refine functionBench test script to avoid error avg. latencies.
+* Refine `delete_containers.sh` script to eliminate unnecessary error msgs.
+* Refine descriptions of the results of test cases.
+
 <font color="green"> **Updates (2021-12-11)** </font>:
 
 * Generate baseline data for chained application tests 3-(1);
@@ -181,9 +187,9 @@ The `Image Resize` is not included here.
 The above fig shows the results of Linpack.
 
 1. The avg end-to-end latencies of fork and baseline are related to data in Fig-14 in the paper, e.g., 59.30ms as Molecule's data and 191.80ms as Baseline's data;
-
-2. The shown results are different from the results shown in the paper because of different CPU configurations. In the paper, the concrete latencies for baseline (for LinPack) is 461ms and the improvement is about 2.5x. In the F1, the baseline for LinPack is 191ms and the improvement is about 3x. The speedup number variation (2.5x vs. 3x) is reasonable in this case, and the reason for the better result is because: the ratio of computation latencies decreased because of better hardware performance.
-3. You can also use other data, e.g., P99 latencies, for your own usages.
+2. The shown results are different from the results shown in the paper because of different CPU configurations. In the paper, the concrete latencies for baseline (for LinPack) is 461ms and the improvement is about 2.5x. In the F1, the baseline for LinPack is 191ms and the improvement is about 3x. The speedup number variation (2.5x vs. 3x) is reasonable in this case, and the reason for the better result is because: the ratio of computation latencies decreased because of better hardware performance;
+3. In video-processing case, you may get a better result than presented in the paper （it's fine as you are getting better results not worse results). A possible reason is the different I/O settings.
+4. You can also use other data, e.g., P99 latencies, for your own usages.
 
 
 
@@ -278,6 +284,7 @@ You shall see the results like:
 <img alt="cfork on single-PU" src="./docs/cfork-singlePU.png" width="512">
 
 **How to parse the data:**
+The data is related to the python bars in Figure-10 (a)/(b).
 The setting used in the AE (F1) is much better than the server used in the paper.
 Therefore, you shall see a better result in F1 (fork shall achieves 15-17ms, and the baseline can achieve 108-150ms).
 
@@ -302,7 +309,9 @@ You shall see the results like:
 
 **How to parse the data:**
 The above figure shows the DAG latencies in Molecule, which can achieves <1 ms.
-This confirms the claims in the paper that IPC-based DAG communication can achieve significant lower latency (about 100--500us in most cases)
+As the Fig-9(b) in the paper presents the communication latencies of existing serverless platforms,
+e.g., both Lambda and OpenWhisk requires >10ms latencies,
+the evaluated data confirms the claims in the paper that IPC-based DAG communication can achieve significant lower latency (about 100--500us in most cases)
 compared with baseline.
 
 
