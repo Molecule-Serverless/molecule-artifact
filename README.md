@@ -302,17 +302,23 @@ Commands:
 	# This script will run all the four cases (in Figure-12)
 	./staged-func/docker_run.sh
 
-You shall see the results like:
+You shall see the results for both Molecule and Baseline like:
+
 
 <img alt="IPC-based DAG on single-PU" src="./docs/ipc-dag-singlePU.png" width="512">
 
+<img alt="baseline DAG on single-PU" src="./docs/ipc-dag-singlePU-baseline.png" width="512">
+
 
 **How to parse the data:**
-The above figure shows the DAG latencies in Molecule, which can achieves <1 ms.
+The 1st figure shows the DAG latencies in Molecule, which can achieves <1 ms (about 100us in most cases).
+The 2nd figure shows the DAG latencies in Baseline (1500---2000us).
 As the Fig-9(b) in the paper presents the communication latencies of existing serverless platforms,
 e.g., both Lambda and OpenWhisk requires >10ms latencies,
-the evaluated data confirms the claims in the paper that IPC-based DAG communication can achieve significant lower latency (about 100--500us in most cases)
+the evaluated data confirms the claims in the paper that IPC-based DAG communication can achieve significant lower latency (about 100us in most cases)
 compared with baseline.
+Besides, both Molecule and Baseline achieve better result (compared with Fig-12) because of better hardware settings.
+
 
 
 ### (4) cFork using neighborIPC
