@@ -415,7 +415,9 @@ You shall see the results (in the 2nd terminal) like:
 
 **How to parse the data:**
 The results have the same format as the local DAG results.
-This confirms the claims in the paper that XPU-shim's neighbor IPC
+As the Fig-9(b) in the paper presents the communication latencies of existing serverless platforms,
+e.g., both Lambda and OpenWhisk requires >10ms latencies,
+the shown result confirms the claims in the paper that XPU-shim's neighbor IPC
 can help functions on different PU to achieve low communication latency
 (about 150--600us in most cases).
 
