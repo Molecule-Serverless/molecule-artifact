@@ -6,6 +6,10 @@ This artifact lays out the source code and experiment setup for the ACM ASPLOS 2
 *"Serverless Computing on Heterogeneous Computers".*
 
 ---
+**Updates (2021-12-13)** :
+
+* Add baseline test in 3-(3) which generates data for Fig-12 in the paper.
+
 **Updates (2021-12-12)** :
 
 * Refine functionBench test script to avoid error avg. latencies.
