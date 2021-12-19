@@ -15,3 +15,15 @@ Then, run the tests
 	./single-func/arm_docker_run.sh
 
 You shall see the results
+
+### Function-bench
+
+Build the system:
+
+	./build_all_arm.sh
+
+Then, run the tests:
+
+	cd molecule-benchmarks/function-bench
+	./arm_func_bench.sh
+
