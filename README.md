@@ -5,6 +5,8 @@
 This artifact lays out the source code and experiment setup for the ACM ASPLOS 2022 conference paper:
 *"Serverless Computing on Heterogeneous Computers".*
 
+**Disclaimer**: It is not supposed to be used for production environment!
+
 ---
 **Updates (2021-12-13)** :
 
@@ -466,11 +468,6 @@ Follow the instructions in pychain/README.md.
 ## Acknowledgements
 
 We thank all of our reviewer, AE reviewers for their insightful comments!
-
-* If you thought the artifact is well-organized, functional, and easy-to-reproduce,
-consider champain the artifact, thanks in advance.
-* If you thought there are still many things to improve,
-please (anonymously) give the feedbacks through hotCRP.
 
 We are open and welcome developers and researchers to help us to
 improve the project.
